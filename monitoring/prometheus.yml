@@ -1,0 +1,40 @@
+scrape_configs:
+- job_name: 'prometheus'
+  scrape_interval: 10s
+  static_configs:
+  - targets: ['localhost:9090']
+- job_name: 'config-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8050']
+- job_name: 'discovery-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8051']
+- job_name: 'proxy-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8052']
+- job_name: 'gateway-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8053']
+- job_name: 'department-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8054']
+- job_name: 'employee-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8055']
+- job_name: 'organization-service'
+  scrape_interval: 10s
+  metrics_path: '/actuator/prometheus'
+  static_configs:
+  - targets: ['192.168.0.219:8056']
