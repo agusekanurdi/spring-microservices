@@ -1,3 +1,8 @@
+host:
+  zipkin: localhost
+  eureka: localhost
+  auth: localhost
+
 server:
   port: 8053
   servlet:
@@ -8,11 +13,11 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8051/eureka/
+      defaultZone: http://${host.eureka}:8051/eureka/
 
 spring:
   zipkin:
-    baseUrl: http://localhost:9411/
+    baseUrl: http://${host.zipkin}:9411/
   sleuth:
     sampler:
       probability: 1.0
@@ -38,10 +43,10 @@ security:
     client:
       clientId: SampleClientId
       clientSecret: secret
-      accessTokenUri: http://localhost:8052/oauth/token
-      userAuthorizationUri: http://localhost:8052/oauth/authorize
+      accessTokenUri: http://${host.auth}:8052/oauth/token
+      userAuthorizationUri: http://${host.auth}:8052/oauth/authorize
     resource:
-      userInfoUri: http://localhost:8052/user/me
+      userInfoUri: http://${host.auth}:8052/user/me
 
 management:
   metrics:
@@ -57,3 +62,12 @@ management:
     web:
       exposure:
         include: health,info,prometheus
+
+---
+spring:
+  profiles: deployment
+
+host:
+  zipkin: zipkin
+  eureka: discovery-service
+  auth: localhost

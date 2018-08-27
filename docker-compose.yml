@@ -29,6 +29,21 @@ services:
     image: auth-service:latest
     build:
       context: ./auth-service
+    ports:
+    - 8052:8052
+    depends_on:
+    - discovery-service
+    environment:
+    - SPRING_PROFILES_ACTIVE=deployment
+
+  proxy-service:
+    container_name: proxy-service
+    restart: always
+    image: proxy-service:latest
+    build:
+      context: ./proxy-service
+    ports:
+    - 8053:8053
     depends_on:
     - discovery-service
     environment:

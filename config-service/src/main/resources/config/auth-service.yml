@@ -1,14 +1,22 @@
+host:
+  zipkin: localhost
+  eureka: localhost
+
+login:
+  proxy: http://localhost:8053/login
+  ui: http://localhost:8057/login
+
 server:
   port: 8052
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8051/eureka/
+      defaultZone: http://${host.eureka}:8051/eureka/
 
 spring:
   zipkin:
-    baseUrl: http://localhost:9411/
+    baseUrl: http://${host.zipkin}:9411/
   sleuth:
     sampler:
       probability: 1.0
@@ -35,10 +43,11 @@ management:
 ---
 spring:
   profiles: deployment
-  zipkin:
-    baseUrl: http://zipkin:9411/
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://discovery-service:8051/eureka/
+host:
+  zipkin: zipkin
+  eureka: discovery-service
+
+login:
+  proxy: http://localhost:8053/login
+  ui: http://localhost:8057/login

@@ -1,6 +1,7 @@
 package com.aguseka.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -11,6 +12,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+    @Value("${login.proxy}")
+    private String proxyLoginURL;
+
+    @Value("${login.ui}")
+    private String uiLoginURL;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -29,6 +36,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .authorizedGrantTypes("authorization_code")
                 .scopes("user_info")
                 .autoApprove(true)
-                .redirectUris("http://localhost:8057/login","http://localhost:8053/login");
+                .redirectUris(proxyLoginURL,uiLoginURL);
     }
 }
