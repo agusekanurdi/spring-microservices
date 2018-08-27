@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-alpine
-ENV APP_FILE ui-service-1.0-SNAPSHOT.jar
+ENV APP_FILE proxy-service-1.0-SNAPSHOT.jar
 ENV APP_HOME /app
-EXPOSE 8057
+EXPOSE 8053
 COPY target/$APP_FILE $APP_HOME/
 WORKDIR $APP_HOME
 ENTRYPOINT ["sh", "-c"]
