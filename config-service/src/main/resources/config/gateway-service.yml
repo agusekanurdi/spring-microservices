@@ -1,5 +1,9 @@
 server:
   port: 8053
+  servlet:
+    session:
+      cookie:
+        name: UISESSION
 
 eureka:
   client:
@@ -9,6 +13,16 @@ eureka:
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+security:
+  oauth2:
+    client:
+      clientId: SampleClientId
+      clientSecret: secret
+      accessTokenUri: http://localhost:8057/auth/oauth/token
+      userAuthorizationUri: http://localhost:8057/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8057/auth/user/me
               
 spring:
   zipkin:
