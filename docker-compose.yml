@@ -48,3 +48,16 @@ services:
     - discovery-service
     environment:
     - SPRING_PROFILES_ACTIVE=deployment
+
+  department-service:
+    container_name: department-service
+    restart: always
+    image: department-service:latest
+    build:
+      context: ./department-service
+    ports:
+    - 8055:8055
+    depends_on:
+    - discovery-service
+    environment:
+    - SPRING_PROFILES_ACTIVE=deployment
