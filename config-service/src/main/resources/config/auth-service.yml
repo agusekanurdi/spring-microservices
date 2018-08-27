@@ -1,7 +1,5 @@
 server:
-  port: 8057
-  servlet:
-    context-path: /auth
+  port: 8052
 
 eureka:
   client:

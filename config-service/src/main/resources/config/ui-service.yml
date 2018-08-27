@@ -1,7 +1,6 @@
 server:
-  port: 8058
+  port: 8057
   servlet:
-    context-path: /ui
     session:
       cookie:
         name: UISESSION
@@ -11,10 +10,11 @@ security:
     client:
       clientId: SampleClientId
       clientSecret: secret
-      accessTokenUri: http://localhost:8057/auth/oauth/token
-      userAuthorizationUri: http://localhost:8057/auth/oauth/authorize
+      accessTokenUri: http://localhost:8052/oauth/token
+      userAuthorizationUri: http://localhost:8052/oauth/authorize
     resource:
-      userInfoUri: http://localhost:8057/auth/user/me
+      userInfoUri: http://localhost:8052/user/me
+
 spring:
   thymeleaf:
     cache: false
