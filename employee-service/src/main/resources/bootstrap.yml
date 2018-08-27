@@ -4,3 +4,10 @@ spring:
   cloud:
     config:
       uri: http://localhost:8050
+      fail-fast: true
+---
+spring:
+  profiles: deployment
+  cloud:
+    config:
+      uri: http://config-service:8050
