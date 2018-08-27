@@ -1,0 +1,49 @@
+server:
+  port: 8058
+  servlet:
+    context-path: /ui
+    session:
+      cookie:
+        name: UISESSION
+
+security:
+  oauth2:
+    client:
+      clientId: SampleClientId
+      clientSecret: secret
+      accessTokenUri: http://localhost:8057/auth/oauth/token
+      userAuthorizationUri: http://localhost:8057/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8057/auth/user/me
+spring:
+  thymeleaf:
+    cache: false
+  zipkin:
+    baseUrl: http://localhost:9411/
+    sleuth:
+      sampler:
+        probability: 1.0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8051/eureka/
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
