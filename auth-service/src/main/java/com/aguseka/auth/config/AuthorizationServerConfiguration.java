@@ -29,6 +29,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .authorizedGrantTypes("authorization_code")
                 .scopes("user_info")
                 .autoApprove(true)
-                .redirectUris("http://localhost:8058/ui/login");
+                .redirectUris("http://localhost:8058/ui/login","http://localhost:8052/login");
     }
 }
