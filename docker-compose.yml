@@ -22,3 +22,14 @@ services:
     - config-service
     environment:
     - SPRING_PROFILES_ACTIVE=deployment
+
+  auth-service:
+    container_name: auth-service
+    restart: always
+    image: auth-service:latest
+    build:
+      context: ./auth-service
+    depends_on:
+    - discovery-service
+    environment:
+    - SPRING_PROFILES_ACTIVE=deployment
