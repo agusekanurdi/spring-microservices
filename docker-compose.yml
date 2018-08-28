@@ -89,3 +89,16 @@ services:
 #    - discovery-service
 #    environment:
 #    - SPRING_PROFILES_ACTIVE=deployment
+
+  ui-service:
+    container_name: ui-service
+    restart: always
+    image: ui-service:latest
+    build:
+      context: ./ui-service
+    ports:
+    - 8057:8057
+    depends_on:
+    - discovery-service
+    environment:
+    - SPRING_PROFILES_ACTIVE=deployment
