@@ -51,41 +51,41 @@ services:
     environment:
     - SPRING_PROFILES_ACTIVE=deployment
 
-  organization-service:
-    container_name: organization-service
-    restart: always
-    image: organization-service:latest
-    build:
-      context: ./organization-service
-    ports:
-    - 8054:8054
-    depends_on:
-    - discovery-service
-    environment:
-    - SPRING_PROFILES_ACTIVE=deployment
+#  organization-service:
+#    container_name: organization-service
+#    restart: always
+#    image: organization-service:latest
+#    build:
+#      context: ./organization-service
+#    ports:
+#    - 8054:8054
+#    depends_on:
+#    - discovery-service
+#    environment:
+#    - SPRING_PROFILES_ACTIVE=deployment
 
-  department-service:
-    container_name: department-service
-    restart: always
-    image: department-service:latest
-    build:
-      context: ./department-service
-    ports:
-    - 8055:8055
-    depends_on:
-    - discovery-service
-    environment:
-    - SPRING_PROFILES_ACTIVE=deployment
+#  department-service:
+#    container_name: department-service
+#    restart: always
+#    image: department-service:latest
+#    build:
+#      context: ./department-service
+#    ports:
+#    - 8055:8055
+#    depends_on:
+#    - discovery-service
+#    environment:
+#    - SPRING_PROFILES_ACTIVE=deployment
 
-  employee-service:
-    container_name: employee-service
-    restart: always
-    image: employee-service:latest
-    build:
-      context: ./employee-service
-    ports:
-    - 8056:8056
-    depends_on:
-    - discovery-service
-    environment:
-    - SPRING_PROFILES_ACTIVE=deployment
+#  employee-service:
+#    container_name: employee-service
+#    restart: always
+#    image: employee-service:latest
+#    build:
+#      context: ./employee-service
+#    ports:
+#    - 8056:8056
+#    depends_on:
+#    - discovery-service
+#    environment:
+#    - SPRING_PROFILES_ACTIVE=deployment
